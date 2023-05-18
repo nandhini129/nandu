@@ -1,0 +1,51 @@
+*{
+    padding: 0;
+    margin:0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Acme', sans-serif;
+    background-color: wheat;
+    color: blue;
+    background-image: url(/photo-1418985991508-e47386d96a71.avif);
+    background-size: cover;
+}
+p{
+    color: aqua;
+}
+h1{
+    color: blue;
+}
+h2{
+    color: brown;
+}
+h3{
+    color: blueviolet;
+}
+h4{
+    color: aquamarine;
+}
+h5{
+    color: bisque;
+}
+h6{
+    color: azure;
+}
+h1,h2,h3,h4,h5,h6{
+    font-family: 'Pacifico', cursive;
+}
+ol li:hover{
+color: brownu;
+}
+ul li:hover{
+    color: black;
+}
+.button{
+    padding: 10px;
+    margin: 41px;
+    border: 2px solid red;
+    border-radius: 5px;
+    background: green;
+    color: white;
+    box-shadow: 3px 2px 4px 10px;
+}

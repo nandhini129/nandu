@@ -1,0 +1,157 @@
+function showMenu() {
+    var x = document.getElementById("menuContLayer");
+    x.style.display = "block";
+}
+
+function hideMenu() {
+    var x = document.getElementById("menuContLayer");
+    x.style.display = "none";
+}
+
+document.getElementById("menuButton").addEventListener("click", showMenu, { passive: true });
+document.getElementById("menuContLayer").addEventListener("click", hideMenu, { passive: true });
+
+
+
+
+
+
+
+// empty google ads spaces
+
+
+function getRndBannerContent() {
+    
+    var rndm = Math.floor(Math.random() * 3);
+    
+    var urlImg;
+    var url;
+    var contentText;
+    
+    switch (rndm) {
+      case 0:
+        urlImg = "playlists/spotify-ron-gelinas-royalty-free-chill-soul-and-jazz-music-big.jpg";
+        url= "https://open.spotify.com/playlist/2JWBFc7Rg1XMfdBkOiP8Vw";
+        contentText = "Royalty Free Chill, Soul & Jazz Beats";
+        break;
+    case 1:
+        urlImg = "playlists/royalty-free-music-for-cafes-restaurants-and-lounges-big.jpg";
+        url= "https://open.spotify.com/playlist/0nv0KSBNpl9dibVPCEEUsn";
+        contentText = "Royalty Free Beats for Cafés, Lounges & Restaurants";
+        break;
+    case 2:
+        urlImg = "playlists/royalty-free-music-for-yoga-pilates-stretching-big.jpg";
+        url= "https://open.spotify.com/playlist/1ikFxq8NQrIN8OKERfznXN";
+        contentText = "Royalty Free Beats for Yoga, Pilates, Stretching";
+        break;
+    }
+    
+    
+    return '<a rel="nofollow" class="defBanner" href="' + url + '" target="_blank"><img src="../banners/' + urlImg + '" alt="' + contentText + '"></a>';
+    
+}
+
+
+if (document.querySelectorAll("#targetTop ins").length > 0) {
+  var elementTop = document.querySelector("#targetTop ins");
+
+  var observerTop = new MutationObserver(function(mutationsTop) {
+    mutationsTop.forEach(function(mutationsTop) {
+      if (mutationsTop.type === "attributes") {
+        if (elementTop.getAttribute("data-ad-status") == "unfilled") {
+          console.log("attributes changed for #targetTop");
+
+          var insHeight = document.querySelector("#targetTop ins").offsetHeight;
+
+          document.querySelector("#targetTop").innerHTML = "";
+          document.querySelector("#targetTop").style.height = insHeight + "px";
+
+          var appendDivTop = document.createElement("div");
+          appendDivTop.classList.add("defBannerCont");
+          appendDivTop.innerHTML = getRndBannerContent();
+          document.querySelector("#targetTop").appendChild(appendDivTop);
+        }
+      }
+    });
+  });
+
+  observerTop.observe(elementTop, {
+    attributes: true,
+    attributeFilter: ["data-ad-status"]
+  });
+}
+
+if (document.querySelectorAll("#targetMiddle ins").length > 0) {
+  var elementMiddle = document.querySelector("#targetMiddle ins");
+
+  var observerMiddle = new MutationObserver(function(mutationsMiddle) {
+    mutationsMiddle.forEach(function(mutationsMiddle) {
+      if (mutationsMiddle.type === "attributes") {
+        if (elementMiddle.getAttribute("data-ad-status") == "unfilled") {
+          console.log("attributes changed for #targetMiddle");
+
+          var insHeight = document.querySelector("#targetMiddle ins").offsetHeight;
+
+          document.querySelector("#targetMiddle").innerHTML = "";
+          document.querySelector("#targetMiddle").style.height = insHeight + "px";
+
+          var appendDivMiddle = document.createElement("div");
+          appendDivMiddle.classList.add("defBannerCont");
+          appendDivMiddle.innerHTML = getRndBannerContent();
+          document.querySelector("#targetMiddle").appendChild(appendDivMiddle);
+        }
+      }
+    });
+  });
+
+  observerMiddle.observe(elementMiddle, {
+    attributes: true,
+    attributeFilter: ["data-ad-status"]
+  });
+}
+
+
+if (document.querySelectorAll("#targetBottom ins").length > 0) {
+  var elementBottom = document.querySelector("#targetBottom ins");
+
+  var observerBottom = new MutationObserver(function(mutationsBottom) {
+    mutationsBottom.forEach(function(mutationsBottom) {
+      if (mutationsBottom.type === "attributes") {
+        if (elementBottom.getAttribute("data-ad-status") == "unfilled") {
+          console.log("attributes changed for #targetBottom");
+
+          var insHeight = document.querySelector("#targetBottom ins").offsetHeight;
+
+          document.querySelector("#targetBottom").innerHTML = "";
+          document.querySelector("#targetBottom").style.height = insHeight + "px";
+
+          var appendDivBottom = document.createElement("div");
+          appendDivBottom.classList.add("defBannerCont");
+          appendDivBottom.innerHTML = getRndBannerContent();
+          document.querySelector("#targetBottom").appendChild(appendDivBottom);
+        }
+      }
+    });
+  });
+
+  observerBottom.observe(elementBottom, {
+    attributes: true,
+    attributeFilter: ["data-ad-status"]
+  });
+}
+
+
+
+
+
+// stop all players if any
+
+document.addEventListener('play', function(e) {
+    var audios = document.getElementsByTagName('audio');
+
+    for (var i = 0, len = audios.length; i < len; i++) {
+        if (audios[i] != e.target) {
+            audios[i].pause();
+        }
+    }
+}, true);
